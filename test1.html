@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<httm>
+
+    <head>
+        <meta charset="utf-8">
+        
+    </head>
+    
+    <body>
+        <script>
+            var lName = prompt("Укажите вашу фамилию");
+            var fName = prompt("Имя");
+            var mName = prompt("Отчество");
+            var ageInYear = prompt("Возраст в годах");
+            var sexBool = confirm("Ваш пол - мужской?");
+            var fullName = lName +" "+fName+" "+mName;
+            var sexString = "мужской";
+            var pensionBoolInRUS;
+            if (!sexBool)
+            {
+                sexString="женский";
+            }
+
+            if (sexBool && ageInYear>=65 || !sexBool && ageInYear>=62)
+            {
+               pensionBoolInRUS = "да";
+            }
+            else 
+            {
+                pensionBoolInRUS = "нет";
+            }
+
+            var ansver ="ваше ФИО: "+fullName+" \nваш возраст в годах: "+ageInYear+"\nваш возраст в днях: "
+                     +(ageInYear*365+math.floor(ageInYear/4))+"\nчерез 5 лет вам будет: "+(parseFloat(ageInYear)+5)+"\nваш пол: "+sexString+
+                            "\nвы на пенсии: "+pensionBoolInRUS; 
+            alert(ansver);
+        </script>
+    </body>
+</httm>
