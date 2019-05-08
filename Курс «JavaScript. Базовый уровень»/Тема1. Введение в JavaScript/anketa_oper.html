@@ -11,7 +11,13 @@
             var lName = prompt("Укажите вашу фамилию");
             var fName = prompt("Имя");
             var mName = prompt("Отчество");
-            var ageInYear = prompt("Возраст в годах");
+            
+            do
+            {
+            var ageInYearStr = prompt("Возраст в годах");
+            var ageInYear= parseInt(ageInYearStr);
+            }while (isNaN(ageInYear))
+
             var sexBool = confirm("Ваш пол - мужской?");
             var fullName = lName +" "+fName+" "+mName;
             var sexString = "мужской";
@@ -21,7 +27,7 @@
             pensionBoolInRUS=(sexBool && ageInYear>=65 || !sexBool && ageInYear>=62)?"да":"нет";
 
             var ansver ="ваше ФИО: "+fullName+" \nваш возраст в годах: "+ageInYear+"\nваш возраст в днях: "
-                     +(ageInYear*365)+"\nчерез 5 лет вам будет: "+(parseFloat(ageInYear)+5)+"\nваш пол: "+sexString+
+                     +(ageInYear*365)+"\nчерез 5 лет вам будет: "+(ageInYear+5)+"\nваш пол: "+sexString+
                             "\nвы на пенсии: "+pensionBoolInRUS; 
             alert(ansver);
         </script>
