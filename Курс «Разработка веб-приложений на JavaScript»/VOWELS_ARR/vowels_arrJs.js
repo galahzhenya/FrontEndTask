@@ -32,8 +32,7 @@ function SearchVowelsRUSfilter(str,listOfVawelsRus)
 
 var countUsedReduse = str.split('').reduce(function(count, elem) 
     {
-        if(elem in listOfVawelsRus)return ++count;
-        else return count;
+        return (elem in listOfVawelsRus)?++count:count;
     },0);
 
 
