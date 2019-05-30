@@ -44,5 +44,5 @@ function SearchVowelsRUSreduce(str)
 
 alert("Количество гласных букв в вашей строке (forEach) = "+SearchVowelsRUSForEach(str));
 alert("Количество гласных букв в вашей строке (filter) = "+SearchVowelsRUSfilter(str));
-alert("Количество гласных букв в вашей строке (reduse) = "+SearchVowelsRUSfilter(str));
+alert("Количество гласных букв в вашей строке (reduse) = "+SearchVowelsRUSreduce(str));
 })( );  
