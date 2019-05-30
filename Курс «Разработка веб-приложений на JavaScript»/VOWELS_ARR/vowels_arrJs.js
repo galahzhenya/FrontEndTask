@@ -2,13 +2,12 @@
 
 (function() {
 do{
-    
+
     var str = prompt("Введите строку").toLowerCase();
-    
+
 } while(!str);
 
 var listOfVawelsRus = {а:true, о:true, у:true, ы:true, э:true, я:true, е:true, ё:true, ю:true, и:true};
-
 
 function SearchVowelsRUSForEach(str,listOfVawelsRus)
 {
