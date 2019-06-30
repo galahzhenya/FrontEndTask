@@ -22,6 +22,7 @@ for (var i = 0; i < imgList.length; i++) {
 }
 
 var zInd=0;
+var targetElem;
 var x;
 var y;
 function mousedown(EO){
@@ -30,37 +31,41 @@ function mousedown(EO){
   y=EO.pageY-EO.target.offsetTop;
   zInd++;
   EO.target.style.zIndex=zInd;
-  EO.target.addEventListener("mousemove",mousemove,false);
+  document.body.addEventListener("mousemove",mousemove,false);
   document.body.style.cursor="pointer";
+  targetElem = EO.target;
+  
 
 }
 function mousemove(EO) {
-  console.log(document.body.style.cursor)
+  console.log(EO.target)
   document.body.style.cursor="pointer";
   EO=EO||window.event;
   EO.preventDefault();
   //Границы по горизонтали
-  if (EO.pageX-x+EO.target.offsetWidth > parseInt(div1.style.width)){
-    EO.target.style.left = (parseInt(div1.style.width)-EO.target.offsetWidth)+"px";
+  if (EO.pageX-x+targetElem.offsetWidth > parseInt(div1.style.width)){
+    targetElem.style.left = (parseInt(div1.style.width)-targetElem.offsetWidth)+"px";
   } else if (EO.pageX-x < 0){
-    EO.target.style.left="0px"
+    targetElem.style.left="0px"
   }
   else{
-  EO.target.style.left=(EO.pageX-x)+"px";
+    targetElem.style.left=(EO.pageX-x)+"px";
   }
 
-  if (EO.pageY-y+EO.target.offsetHeight > parseInt(div1.style.height)){
-    EO.target.style.top = (parseInt(div1.style.height)-EO.target.offsetHeight)+"px";
+  if (EO.pageY-y+targetElem.offsetHeight > parseInt(div1.style.height)){
+    targetElem.style.top = (parseInt(div1.style.height)-targetElem.offsetHeight)+"px";
   } else if (EO.pageY-y < 0){
-    EO.target.style.top="0px"
+    targetElem.style.top="0px"
   }
   else{
-    EO.target.style.top=(EO.pageY-y)+"px";
+    targetElem.style.top=(EO.pageY-y)+"px";
   }
 }
 
 function mouseup(EO) {
-  EO.target.removeEventListener("mousemove",mousemove,false);
+  //EO.target.removeEventListener("mousemove",mousemove,false);
+  document.body.removeEventListener("mousemove",mousemove,false);
   document.body.style.cursor="default";
+  targetElem = null;  
 
 }

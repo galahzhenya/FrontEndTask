@@ -118,15 +118,34 @@ buildForm("formDef1",formDef1);
 //------------Непосредственно код задания по валидации формы-------------//
 // Обработчик события "фокус" на элементы формы 
 var formDef1 = document.forms.formDef1;
+var catalogChangeFlag = false;
 formDef1.addEventListener("blur", function( event ) {
-  var elemErrorMes = event.target.parentElement.nextSibling;
-  var elemTarget = event.target;
-  elemErrorMes.style.color="#ff0000";
-  var errorMesString = validForm(elemTarget);
-  elemErrorMes.innerHTML= '&nbsp;'; //Очистка ячейки таблицы
-  
-  elemErrorMes.appendChild(document.createTextNode(errorMesString))
+  if (event.target.type !="radio" && event.target.type !="checkbox"){
+    var elemErrorMes = event.target.parentElement.nextSibling;
+    var elemTarget = event.target;
+    elemErrorMes.style.color="#ff0000";
+    var errorMesString = validForm(elemTarget);
+    elemErrorMes.innerHTML= '&nbsp;'; //Очистка ячейки таблицы
+
+    elemErrorMes.appendChild(document.createTextNode(errorMesString))
+  }
+  if( elemTarget.getElementsByTagName("option").length>1 ){
+      catalogChangeFlag = true;
+  }
 }, true);
+
+formDef1.addEventListener("change", function( event ) {
+  if (event.target.type =="radio" || event.target.type =="checkbox"){
+    var elemErrorMes = event.target.parentElement.nextSibling;
+    var elemTarget = event.target;
+    elemErrorMes.style.color="#ff0000";
+    var errorMesString = validForm(elemTarget);
+    elemErrorMes.innerHTML= '&nbsp;'; //Очистка ячейки таблицы
+
+    elemErrorMes.appendChild(document.createTextNode(errorMesString))
+  }
+}, true);
+
 
 // Обработчик события submit
 formDef1.addEventListener('submit',validateInfoForm,false);
@@ -154,16 +173,16 @@ function validateInfoForm(event){
     if(errorCount==1){ 
     elemValid.focus();
     }
-    console.log(elemValid);
-    console.log(errorCount);
-
     //if(errorCount==1) trList[i].firstChild.firstChild.nextSibling.nextSibling.focus();
-
     elemErrorMes.style.color="#ff0000";
     elemErrorMes.innerHTML= '&nbsp;'; //Очистка ячейки таблицы
+    if (elemValid.getElementsByTagName("option").length>1 && !catalogChangeFlag ){
+      errorMesString ="Укажите явно рубрику каталога"; 
+      
+    }
     elemErrorMes.appendChild(document.createTextNode(errorMesString));
-
   }
+  console.log(errorCount);
   if(errorCount>0){
   event.preventDefault();
   }
