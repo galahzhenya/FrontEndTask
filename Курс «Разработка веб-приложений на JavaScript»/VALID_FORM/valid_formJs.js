@@ -177,7 +177,7 @@ function validateInfoForm(event){
     elemErrorMes.style.color="#ff0000";
     elemErrorMes.innerHTML= '&nbsp;'; //Очистка ячейки таблицы
     if (elemValid.getElementsByTagName("option").length>1 && !catalogChangeFlag ){
-      errorMesString ="Укажите явно рубрику каталога"; 
+      errorMesString ="Пожалуйста, явно укажите рубрику каталога."; 
       
     }
     elemErrorMes.appendChild(document.createTextNode(errorMesString));
