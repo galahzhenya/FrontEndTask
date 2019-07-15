@@ -81,7 +81,6 @@ hourHandDiv.style.top = ((CENTERDIVDIAMENT-(hourHandHK*(CLOCKDIAMETER/2)))/2)+"p
 hourHandDiv.style.background = "#000000";
 hourHandDiv.style.borderRadius = "30%";
 hourHandDiv.style.transformOrigin = transformOriginPX+"px center";
-hourHandDiv.style.transform = "rotate(5deg)";
 
 //Минутная стрелка
 var minuteHandDiv = document.createElement("div");
@@ -94,7 +93,6 @@ minuteHandDiv.style.top = ((CENTERDIVDIAMENT-(minuteHandHK*(CLOCKDIAMETER/2)))/2
 minuteHandDiv.style.background = "#000000";
 minuteHandDiv.style.borderRadius = "30%";
 minuteHandDiv.style.transformOrigin = transformOriginPX+"px center";
-minuteHandDiv.style.transform = "rotate(80deg)";
 
 //Секундная стрелка
 var secondHandDiv = document.createElement("div");
@@ -107,7 +105,6 @@ secondHandDiv.style.top = ((CENTERDIVDIAMENT-(secondHandHK*(CLOCKDIAMETER/2)))/2
 secondHandDiv.style.background = "#000000";
 secondHandDiv.style.borderRadius = "30%";
 secondHandDiv.style.transformOrigin = transformOriginPX+"px center";
-secondHandDiv.style.transform = "rotate(90deg)";
 
 
 centerDiv.appendChild(hourHandDiv);
